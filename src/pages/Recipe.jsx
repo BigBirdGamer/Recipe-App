@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
 
 function Recipe(props) {
   const [details, setDetails] = useState({});
@@ -34,15 +33,16 @@ function Recipe(props) {
       <div >
         <h4>Instructions</h4>
         {/* <p>{details.summary}</p> */}
-        <p dangerouslySetInnerHTML={{__html: details?.summary}}></p>
-        <p dangerouslySetInnerHTML={{__html: details?.instructions}}></p>
+        <p className="summary" dangerouslySetInnerHTML={{__html: details?.summary}}></p>
+        <p className="instructions" dangerouslySetInnerHTML={{__html: details?.instructions}}></p>
+        
         <div>
           <h4>Ingredients</h4>
           <ul>
             {details &&
               details.extendedIngredients &&
               details?.extendedIngredients.map((ingredient, index) => {
-                return <li key={index}>{ingredient.original}</li>;
+                return <li className="ingredient" key={index}>{ingredient.original}</li>;
               })}
           </ul>
         </div>
